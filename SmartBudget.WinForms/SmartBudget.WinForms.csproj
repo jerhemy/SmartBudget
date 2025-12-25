@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <StartupObject>SmartBudget.WinForms.Program</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Persistence\Sqlite\Scripts\schema.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Persistence\Sqlite\Scripts\schema.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Pages\" />
+    <Folder Include="Persistence\Sqlite\Accounts\" />
+    <Folder Include="Persistence\Sqlite\Transactions\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.66" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.1" />
+  </ItemGroup>
+
+</Project>

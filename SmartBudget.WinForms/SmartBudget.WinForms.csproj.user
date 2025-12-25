@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_LastSelectedProfileId>D:\projects\Budget\SmartBudget.WinForms\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="Controls\Balance\BalanceTile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\Calendar\CalendarDayCell.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\Calendar\CalendarView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\Charts\MiniBalanceLineChart.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\SideNav\SideNav.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\SideNav\SideNavItemView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Navigation\AccountPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Navigation\Dashboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
