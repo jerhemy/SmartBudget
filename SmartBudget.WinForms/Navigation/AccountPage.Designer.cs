@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             splitContainer1 = new SplitContainer();
-            gridAutoPays = new DataGridView();
-            miniBalanceLineChart1 = new SmartBudget.WinForms.Controls.Charts.MiniBalanceLineChart();
-            btnImportQuicken = new Button();
             panel1 = new Panel();
+            miniBalanceLineChart1 = new SmartBudget.WinForms.Controls.Charts.MiniBalanceLineChart();
+            btnImportCsv = new Button();
+            gridAutoPays = new DataGridView();
+            btnImportQuicken = new Button();
             btnDeleteTransaction = new Button();
             txtAmount = new TextBox();
             txtTitle = new TextBox();
             btnAddTransaction = new Button();
             cboAccounts = new ComboBox();
             dtTransactionDate = new DateTimePicker();
-            btnImportCsv = new Button();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             calendarControl = new SmartBudget.WinForms.Controls.Calendar.CalendarView();
@@ -49,8 +49,8 @@
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)gridAutoPays).BeginInit();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)gridAutoPays).BeginInit();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -66,11 +66,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            splitContainer1.Panel1.Controls.Add(gridAutoPays);
-            splitContainer1.Panel1.Controls.Add(miniBalanceLineChart1);
-            splitContainer1.Panel1.Controls.Add(btnImportQuicken);
             splitContainer1.Panel1.Controls.Add(panel1);
-            splitContainer1.Panel1.Controls.Add(btnImportCsv);
             // 
             // splitContainer1.Panel2
             // 
@@ -79,54 +75,63 @@
             splitContainer1.SplitterDistance = 758;
             splitContainer1.TabIndex = 1;
             // 
-            // gridAutoPays
-            // 
-            gridAutoPays.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            gridAutoPays.Dock = DockStyle.Fill;
-            gridAutoPays.Location = new Point(0, 0);
-            gridAutoPays.Name = "gridAutoPays";
-            gridAutoPays.RowHeadersWidth = 51;
-            gridAutoPays.Size = new Size(758, 1162);
-            gridAutoPays.TabIndex = 5;
-            // 
-            // miniBalanceLineChart1
-            // 
-            miniBalanceLineChart1.Dock = DockStyle.Fill;
-            miniBalanceLineChart1.Location = new Point(0, 0);
-            miniBalanceLineChart1.Name = "miniBalanceLineChart1";
-            miniBalanceLineChart1.Padding = new Padding(25);
-            miniBalanceLineChart1.Size = new Size(758, 1162);
-            miniBalanceLineChart1.TabIndex = 4;
-            miniBalanceLineChart1.Text = "miniBalanceLineChart1";
-            // 
-            // btnImportQuicken
-            // 
-            btnImportQuicken.Dock = DockStyle.Fill;
-            btnImportQuicken.Location = new Point(0, 0);
-            btnImportQuicken.Name = "btnImportQuicken";
-            btnImportQuicken.Size = new Size(758, 1162);
-            btnImportQuicken.TabIndex = 3;
-            btnImportQuicken.Text = "Import Quicken File";
-            btnImportQuicken.UseVisualStyleBackColor = true;
-            // 
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(miniBalanceLineChart1);
+            panel1.Controls.Add(btnImportCsv);
+            panel1.Controls.Add(gridAutoPays);
+            panel1.Controls.Add(btnImportQuicken);
             panel1.Controls.Add(btnDeleteTransaction);
             panel1.Controls.Add(txtAmount);
             panel1.Controls.Add(txtTitle);
             panel1.Controls.Add(btnAddTransaction);
             panel1.Controls.Add(cboAccounts);
             panel1.Controls.Add(dtTransactionDate);
-            panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(0, 0);
+            panel1.Location = new Point(28, 32);
             panel1.Name = "panel1";
-            panel1.Size = new Size(758, 1162);
+            panel1.Size = new Size(697, 1103);
             panel1.TabIndex = 2;
+            // 
+            // miniBalanceLineChart1
+            // 
+            miniBalanceLineChart1.Location = new Point(19, 445);
+            miniBalanceLineChart1.Name = "miniBalanceLineChart1";
+            miniBalanceLineChart1.Padding = new Padding(25);
+            miniBalanceLineChart1.Size = new Size(628, 79);
+            miniBalanceLineChart1.TabIndex = 4;
+            miniBalanceLineChart1.Text = "miniBalanceLineChart1";
+            // 
+            // btnImportCsv
+            // 
+            btnImportCsv.Location = new Point(429, 279);
+            btnImportCsv.Name = "btnImportCsv";
+            btnImportCsv.Size = new Size(135, 31);
+            btnImportCsv.TabIndex = 1;
+            btnImportCsv.Text = "Import";
+            btnImportCsv.UseVisualStyleBackColor = true;
+            // 
+            // gridAutoPays
+            // 
+            gridAutoPays.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            gridAutoPays.Location = new Point(26, 530);
+            gridAutoPays.Name = "gridAutoPays";
+            gridAutoPays.RowHeadersWidth = 51;
+            gridAutoPays.Size = new Size(621, 81);
+            gridAutoPays.TabIndex = 5;
+            // 
+            // btnImportQuicken
+            // 
+            btnImportQuicken.Location = new Point(26, 379);
+            btnImportQuicken.Name = "btnImportQuicken";
+            btnImportQuicken.Size = new Size(173, 34);
+            btnImportQuicken.TabIndex = 3;
+            btnImportQuicken.Text = "Import Quicken File";
+            btnImportQuicken.UseVisualStyleBackColor = true;
             // 
             // btnDeleteTransaction
             // 
-            btnDeleteTransaction.Location = new Point(19, 268);
+            btnDeleteTransaction.Location = new Point(19, 186);
             btnDeleteTransaction.Name = "btnDeleteTransaction";
             btnDeleteTransaction.Size = new Size(180, 29);
             btnDeleteTransaction.TabIndex = 4;
@@ -152,7 +157,7 @@
             // 
             // btnAddTransaction
             // 
-            btnAddTransaction.Location = new Point(384, 268);
+            btnAddTransaction.Location = new Point(215, 186);
             btnAddTransaction.Name = "btnAddTransaction";
             btnAddTransaction.Size = new Size(180, 29);
             btnAddTransaction.TabIndex = 1;
@@ -173,16 +178,6 @@
             dtTransactionDate.Name = "dtTransactionDate";
             dtTransactionDate.Size = new Size(250, 27);
             dtTransactionDate.TabIndex = 0;
-            // 
-            // btnImportCsv
-            // 
-            btnImportCsv.Dock = DockStyle.Fill;
-            btnImportCsv.Location = new Point(0, 0);
-            btnImportCsv.Name = "btnImportCsv";
-            btnImportCsv.Size = new Size(758, 1162);
-            btnImportCsv.TabIndex = 1;
-            btnImportCsv.Text = "Import";
-            btnImportCsv.UseVisualStyleBackColor = true;
             // 
             // tabControl1
             // 
@@ -222,7 +217,7 @@
             tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1184, 1006);
+            tabPage2.Size = new Size(1526, 1129);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "tabPage2";
             tabPage2.UseVisualStyleBackColor = true;
@@ -247,9 +242,9 @@
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)gridAutoPays).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)gridAutoPays).EndInit();
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage2.ResumeLayout(false);
@@ -260,8 +255,6 @@
         #endregion
 
         private SplitContainer splitContainer1;
-        private DataGridView gridAutoPays;
-        private Controls.Charts.MiniBalanceLineChart miniBalanceLineChart1;
         private Button btnImportQuicken;
         private Panel panel1;
         private Button btnDeleteTransaction;
@@ -276,5 +269,7 @@
         private Controls.Calendar.CalendarView calendarControl;
         private TabPage tabPage2;
         private DataGridView dataGridView1;
+        private Controls.Charts.MiniBalanceLineChart miniBalanceLineChart1;
+        private DataGridView gridAutoPays;
     }
 }

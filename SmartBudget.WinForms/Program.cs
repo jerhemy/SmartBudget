@@ -45,6 +45,20 @@ namespace SmartBudget.WinForms
                         return new DbOptions(dbPath, cs);
                     });
 
+                    // Centralized paths (DB + imports under one root for easy backup/restore)
+                    services.AddSingleton<AppPaths>(sp =>
+                    {
+                        var paths = new AppPaths("SmartBudget");
+                        paths.EnsureDirectories();
+                        return paths;
+                    });
+
+                    services.AddSingleton<IImportFileStore>(sp =>
+                    {
+                        var paths = sp.GetRequiredService<AppPaths>();
+                        return new ImportFileStore(paths.DataDir);
+                    });
+
                     // WinForms forms
                     services.AddTransient<MainForm>();
 
@@ -58,10 +72,15 @@ namespace SmartBudget.WinForms
                     services.AddSingleton<SummaryRepository>();
                     services.AddSingleton<CalendarDataService>();
 
+
+
+
                     // Add Pages Here
                     services.AddSingleton<INavigationService, NavigationService>();
                     services.AddTransient<Dashboard>();
                     services.AddTransient<AccountPage>();
+                    services.AddTransient<ImportPage>();
+
                     services.AddSingleton<UiTheme>(theme => new UiTheme
                     {
                         AppBack = Color.FromArgb(18, 18, 18),

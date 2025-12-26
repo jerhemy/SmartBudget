@@ -6,6 +6,7 @@ public enum SideNavActionKind
 {
     Dashboard,        
     Account,
+    Import,
 }
 
 

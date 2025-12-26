@@ -16,6 +16,9 @@
     <Compile Update="Controls\Charts\MiniBalanceLineChart.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="Controls\FileDrop\FileDropZone.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Controls\SideNav\SideNav.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -29,6 +32,9 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Navigation\Dashboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Navigation\ImportPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>

@@ -36,7 +36,8 @@ public partial class MainForm : Form
         var factories = new Dictionary<PageKey, Func<IPage>>
         {
             [PageKey.Dashboard] = () => _sp.GetRequiredService<Dashboard>(),
-            [PageKey.Accounts] = () => _sp.GetRequiredService<AccountPage>()
+            [PageKey.Accounts] = () => _sp.GetRequiredService<AccountPage>(),
+            [PageKey.Import] = () => _sp.GetRequiredService<ImportPage>()
         };
 
         _nav = new NavigationService(pnlContentHost, factories);
@@ -52,74 +53,6 @@ public partial class MainForm : Form
         await PopulateSideNavAccounts();
         sideNav.ApplyTheme(_theme);
     }
-
-    //private async void CalendarControl_DayClicked(object? sender, CalendarDayClickedEventArgs e)
-    //{
-    //    btnAddTransaction.Show();
-    //    btnDeleteTransaction.Hide();
-
-    //    _selectedTranscation = null;
-    //    txtAmount.Text = string.Empty;
-    //    txtTitle.Text = string.Empty;
-    //    dtTransactionDate.Value = e.Date.ToDateTime(TimeOnly.MinValue);
-    //}
-
-
-    //private async void CalendarControl_TransactionClicked(object? sender, CalendarTransactionClickedEventArgs e)
-    //{
-    //    _selectedTranscation = e.TransactionId;
-    //    btnAddTransaction.Hide();
-    //    btnDeleteTransaction.Show();
-    //    txtAmount.Text = (e.Amount / 100).ToString();
-    //    txtTitle.Text = e.Title;
-    //    dtTransactionDate.Value = e.Date.ToDateTime(TimeOnly.MinValue);
-    //}
-
-    //private async void CalendarControl_TransactionMoved(object? sender, CalendarTransactionMovedEventArgs e)
-    //{
-    //    try
-    //    {
-    //        await _transactions.UpdateDateAsync(e.TransactionId, e.To, CancellationToken.None);
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        MessageBox.Show(this, ex.ToString(), "Error saving move", MessageBoxButtons.OK, MessageBoxIcon.Error);
-    //    }
-
-    //    await ReloadCalendarAsync();
-    //}
-
-    //private async void CalendarControl_DateChanged(object? sender, DateOnly e)
-    //{
-    //    await ReloadCalendarAsync(e);
-    //}
-
-    //private async Task ReloadCalendarAsync(DateOnly? currentDate = null)
-    //{
-    //    if (_accountId == 0)
-    //        return;
-
-    //    var today = DateOnly.FromDateTime(DateTime.Now);
-    //    var firstDayOfMonth = new DateOnly(today.Year, today.Month, 1);
-
-    //    if (currentDate.HasValue)
-    //    {
-    //        firstDayOfMonth = currentDate.Value;
-    //    }
-
-    //    var month = firstDayOfMonth;
-
-    //    var days = await _calendarDataService.GetMonthAsync(_accountId, month.Year, month.Month, CancellationToken.None);
-
-    //    var balance = await _calendarDataService.GetPreviousBalance(_accountId, month.Year, month.Month, CancellationToken.None);
-
-    //    calendarControl.StartingBalanceCents = 0; // TODO: compute from account + prior txns
-    //    calendarControl.DisplayedMonth = month;
-    //    calendarControl.SetMonth(month);
-    //    calendarControl.SetData(days, balance / 100);
-
-
-    //}
 
     protected override void OnFormClosed(FormClosedEventArgs e)
     {
@@ -341,12 +274,6 @@ public partial class MainForm : Form
         {
             var accounts = await _accounts.GetAllAsync(CancellationToken.None);
 
-            //cboAccounts.DisplayMember = "Name";
-            //cboAccounts.ValueMember = "Id";
-            //cboAccounts.DataSource = accounts.ToList();
-
-            //cboAccounts.SelectedIndexChanged += async (_, __) => await ReloadCalendarAsync();
-
             var entries = new List<SideNavEntry>
             {
                 new SideNavHeader("MAIN"),
@@ -364,7 +291,8 @@ public partial class MainForm : Form
 
             entries.AddRange(new List<SideNavEntry> {
                 new SideNavHeader("TOOLS"),
-                new SideNavItem("inport", "Import" /*, homeIcon*/),
+                new SideNavItem("import", "Import Statements", null, null, true, SideNavActionKind.Import, null),
+                new SideNavItem("recurring", "Recurring Transactions", null, null, true, SideNavActionKind.Import, null),
             });
 
             sideNav.SetEntries(entries, selectId: "dashboard");
@@ -383,6 +311,11 @@ public partial class MainForm : Form
                         {
                             _accountId = e.Item.Payload is long id ? id : long.Parse(e.Item.Payload!.ToString()!);
                             _nav.Navigate(PageKey.Accounts, new NavigationContext(AccountId: _accountId));
+                            break;
+                        }
+                    case SideNavActionKind.Import:
+                        {
+                            _nav.Navigate(PageKey.Import);
                             break;
                         }
                 }

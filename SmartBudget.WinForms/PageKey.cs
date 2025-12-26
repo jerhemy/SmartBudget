@@ -7,6 +7,6 @@ namespace SmartBudget.WinForms.Pages;
 public enum PageKey
 {
     Dashboard,
-    Transactions,
-    Accounts
+    Accounts,
+    Import,
 }
